@@ -69,7 +69,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       <header>
         <p className="text-xs uppercase tracking-wide text-slate-500">{tool.category}</p>
         <h1 className="mt-2 text-3xl font-semibold">{tool.name}</h1>
-        <AdSlot client={client} slot={topSlot} minHeight={250} className="mt-4" />
+        <div data-ad-pos="top">
+          <AdSlot client={client} slot={topSlot} minHeight={250} />
+        </div>
         <p className="mt-3 text-slate-600">{tool.summary}</p>
       </header>
 
@@ -111,6 +113,10 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-700">{tool.references.map((ref) => <li key={ref}>{ref}</li>)}</ul>
       </section>
 
+      <div data-ad-pos="bottom">
+        <AdSlot client={client} slot={bottomSlot} minHeight={250} />
+      </div>
+
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Related tools</h2>
         <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
@@ -134,8 +140,6 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
       ) : null}
-
-      <AdSlot client={client} slot={bottomSlot} minHeight={250} className="rounded-2xl bg-white" />
 
       <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         Disclaimer: Informational estimates only. This page is not personalized financial, tax, or legal advice.
