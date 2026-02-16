@@ -49,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-4604662808401939" />
+        <meta name="google-site-verification" content="8G_MHpYNXlNM6coLpU7abGf1HFIlYLixt3IB7ATh1Pc" />
       </head>
       <body className={`${inter.variable} ${sourceSerif.variable} bg-slate-50 text-slate-900 antialiased`}>
         <AdSenseScript />
