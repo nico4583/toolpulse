@@ -37,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${inter.variable} ${sourceSerif.variable} bg-slate-50 text-slate-900 antialiased`}>
         {adsenseClient ? (
           <Script
+            async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
             strategy="afterInteractive"
             crossOrigin="anonymous"
