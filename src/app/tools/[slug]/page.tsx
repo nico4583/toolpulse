@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { AdDebugWarn } from "@/components/ads/AdDebugWarn";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { Breadcrumbs, breadcrumbSchema } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const tool = getToolBySlug(slug);
+  const adsClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const topSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP;
   const bottomSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM;
 
@@ -39,6 +41,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="space-y-8">
+      {adsClient && (!topSlot || !bottomSlot) ? (
+        <AdDebugWarn missingTop={!topSlot} missingBottom={!bottomSlot} />
+      ) : null}
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd
         data={{
