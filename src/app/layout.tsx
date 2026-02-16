@@ -7,7 +7,20 @@ import { siteConfig } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const sourceSerif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif" });
-const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
+function AdSenseScript() {
+  if (!process.env.NEXT_PUBLIC_ADSENSE_CLIENT) return null;
+
+  return (
+    <Script
+      id="adsense-script"
+      strategy="afterInteractive"
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
+      crossOrigin="anonymous"
+    />
+  );
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -35,14 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${inter.variable} ${sourceSerif.variable} bg-slate-50 text-slate-900 antialiased`}>
-        {adsenseClient ? (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-            strategy="afterInteractive"
-            crossOrigin="anonymous"
-          />
-        ) : null}
+        <AdSenseScript />
         <Header />
         <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">{children}</main>
         <Footer />
