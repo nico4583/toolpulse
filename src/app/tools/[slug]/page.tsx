@@ -68,7 +68,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       <header>
         <p className="text-xs uppercase tracking-wide text-slate-500">{tool.category}</p>
         <h1 className="mt-2 text-3xl font-semibold">{tool.name}</h1>
-        {topSlot ? <AdSlot slot={topSlot} className="mt-4" minHeight={280} /> : null}
+        {topSlot ? <AdSlot slot={topSlot} className="mt-4" /> : null}
         <p className="mt-3 text-slate-600">{tool.summary}</p>
       </header>
 
@@ -134,7 +134,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </section>
       ) : null}
 
-      {bottomSlot ? <AdSlot slot={bottomSlot} className="rounded-2xl bg-white" minHeight={280} /> : null}
+      {bottomSlot ? <AdSlot slot={bottomSlot} className="rounded-2xl bg-white" /> : null}
 
       <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         Disclaimer: Informational estimates only. This page is not personalized financial, tax, or legal advice.
