@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { AdSlot } from "@/components/ads/AdSlot";
 import { Breadcrumbs, breadcrumbSchema } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { ToolCalculator } from "@/components/tool-calculator";
@@ -23,6 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ToolPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const tool = getToolBySlug(slug);
+  const topSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP;
+  const bottomSlot = process.env.NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM;
 
   if (!tool) notFound();
 
@@ -65,6 +68,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       <header>
         <p className="text-xs uppercase tracking-wide text-slate-500">{tool.category}</p>
         <h1 className="mt-2 text-3xl font-semibold">{tool.name}</h1>
+        {topSlot ? <AdSlot slot={topSlot} className="mt-4" minHeight={280} /> : null}
         <p className="mt-3 text-slate-600">{tool.summary}</p>
       </header>
 
@@ -129,6 +133,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
       ) : null}
+
+      {bottomSlot ? <AdSlot slot={bottomSlot} className="rounded-2xl bg-white" minHeight={280} /> : null}
 
       <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         Disclaimer: Informational estimates only. This page is not personalized financial, tax, or legal advice.

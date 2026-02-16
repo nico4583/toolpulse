@@ -42,9 +42,19 @@ npm run build
 
 1. Push this repository to GitHub.
 2. In Vercel, click **Add New Project** and import the GitHub repository.
-3. Configure required environment variables in Vercel Project Settings (`Settings > Environment Variables`).
+3. Configure environment variables in Vercel Project Settings (`Settings > Environment Variables`):
+   - `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-4604662808401939`
+   - `NEXT_PUBLIC_ADSENSE_SLOT_TOP` (optional manual slot id)
+   - `NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM` (optional manual slot id)
 4. Verify `siteConfig.url` in `src/lib/site.ts` matches your production domain exactly (for canonical URLs and sitemap).
 5. Deploy (Vercel will run `npm run build`).
+
+## AdSense Notes
+
+- Auto Ads script loads globally only when `NEXT_PUBLIC_ADSENSE_CLIENT` is set.
+- Manual slots on tool pages are shown only when the slot env vars are present.
+- Ads may not render immediately on production until AdSense account/site approval is complete.
+- Update `public/ads.txt` with your real publisher line after approval.
 
 ## SEO Checklist
 

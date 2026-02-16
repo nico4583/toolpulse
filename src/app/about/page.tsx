@@ -14,7 +14,8 @@ export default function AboutPage() {
       <p className="text-slate-700">MoneyMentor Tools is an independent educational site focused on personal finance and salary planning. We publish calculator-driven resources with transparent assumptions.</p>
       <section>
         <h2 className="text-xl font-semibold">Who runs this site</h2>
-        <p className="mt-2 text-slate-700">Author: Alex Rivera (Personal Finance Editor). Editor: Jordan Lee (Senior Content Editor). Our process prioritizes practical usefulness, factual consistency, and transparent formulas.</p>
+        <p className="mt-2 text-slate-700">Creator: Anonymous. Our process prioritizes practical usefulness, factual consistency, and transparent formulas.</p>
+        <p className="mt-2 text-slate-700">For suggestions or inquiries, email: balanceo.systems@gmail.com</p>
       </section>
       <section>
         <h2 className="text-xl font-semibold">Editorial standards</h2>

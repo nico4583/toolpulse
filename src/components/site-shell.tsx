@@ -29,6 +29,9 @@ export function Footer() {
           <p className="mt-2 max-w-xl text-sm text-slate-600">
             We publish practical finance education with transparent formulas and assumptions. Content is informational only and not a substitute for licensed financial advice.
           </p>
+          <p className="mt-2 max-w-xl text-sm text-slate-600">
+            Creator: Anonymous. For suggestions or inquiries, email: balanceo.systems@gmail.com
+          </p>
         </div>
         <div className="sm:text-right">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-700">Legal</h2>
