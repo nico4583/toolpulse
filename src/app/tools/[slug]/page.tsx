@@ -73,6 +73,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       <header>
         <p className="text-xs uppercase tracking-wide text-slate-500">{tool.category}</p>
         <h1 className="mt-2 text-3xl font-semibold">{tool.name}</h1>
+        <div id="ads-debug-top">ADS_DEBUG_TOP_RENDERED</div>
         {topSlot ? <AdSlot slot={topSlot} className="mt-4" /> : null}
         <p className="mt-3 text-slate-600">{tool.summary}</p>
       </header>
@@ -139,6 +140,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </section>
       ) : null}
 
+      <div id="ads-debug-bottom">ADS_DEBUG_BOTTOM_RENDERED</div>
       {bottomSlot ? <AdSlot slot={bottomSlot} className="rounded-2xl bg-white" /> : null}
 
       <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
