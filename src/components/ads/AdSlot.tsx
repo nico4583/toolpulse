@@ -17,25 +17,21 @@ declare global {
 
 export function AdSlot({ slot, className, minHeight = 250 }: Props) {
   const pathname = usePathname();
-  const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
   useEffect(() => {
-    if (!client || !slot) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       // Ignore ad push errors to avoid blocking page rendering.
     }
-  }, [client, slot, pathname]);
-
-  if (!client || !slot) return null;
+  }, [pathname, slot, className, minHeight]);
 
   return (
     <ins
-      className={`adsbygoogle ${className ?? ""}`.trim()}
-      style={{ display: "block", minHeight }}
-      data-ad-client={client}
-      data-ad-slot={slot}
+      className="adsbygoogle"
+      style={{ display: "block", minHeight: 250, outline: "2px solid red" }}
+      data-ad-client="ca-pub-4604662808401939"
+      data-ad-slot="7492187911"
       data-ad-format="auto"
       data-full-width-responsive="true"
     />
