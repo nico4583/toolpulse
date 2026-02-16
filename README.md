@@ -1,4 +1,4 @@
-# MoneyMentor Tools
+# ToolPulse
 
 Production-ready Next.js (App Router) website focused on **Personal Finance & Salary** with SEO-first architecture, calculator pages, and long-form pillar guides.
 

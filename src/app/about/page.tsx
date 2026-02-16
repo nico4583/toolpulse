@@ -3,15 +3,15 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "About",
-  description: "Who runs MoneyMentor Tools, editorial standards, and calculator methodology commitments.",
+  description: "Who runs ToolPulse, editorial standards, and calculator methodology commitments.",
   path: "/about",
 });
 
 export default function AboutPage() {
   return (
     <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h1 className="text-3xl font-semibold">About MoneyMentor Tools</h1>
-      <p className="text-slate-700">MoneyMentor Tools is an independent educational site focused on personal finance and salary planning. We publish calculator-driven resources with transparent assumptions.</p>
+      <h1 className="text-3xl font-semibold">About ToolPulse</h1>
+      <p className="text-slate-700">ToolPulse is an independent educational site focused on personal finance and salary planning. We publish calculator-driven resources with transparent assumptions.</p>
       <section>
         <h2 className="text-xl font-semibold">Who runs this site</h2>
         <p className="mt-2 text-slate-700">Creator: Anonymous. Our process prioritizes practical usefulness, factual consistency, and transparent formulas.</p>

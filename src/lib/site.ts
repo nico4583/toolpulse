@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "MoneyMentor Tools",
+  name: "ToolPulse",
   domain: "moneymentor.tools",
   url: "https://moneymentor.tools",
   description:
