@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moneymentor.tools/sitemap.xml
+Sitemap: https://toolpulse-nine.vercel.app/sitemap.xml

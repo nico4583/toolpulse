@@ -34,7 +34,7 @@ export function breadcrumbSchema(crumbs: Crumb[]) {
       "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
-      item: `https://moneymentor.tools${crumb.href}`,
+      item: `https://toolpulse-nine.vercel.app${crumb.href}`,
     })),
   };
 }
