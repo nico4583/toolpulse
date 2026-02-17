@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Breadcrumbs, breadcrumbSchema } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { guides, guidesBySlug, loadGuideComponent } from "@/lib/guides";
 import { getToolBySlug } from "@/lib/tools";
 
@@ -56,7 +56,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           dateModified: guide.updatedDate,
           author: { "@type": "Person", name: guide.author },
           editor: { "@type": "Person", name: guide.editor },
-          mainEntityOfPage: `https://moneymentor.tools/guides/${guide.slug}`,
+          mainEntityOfPage: absoluteUrl(`/guides/${guide.slug}`),
         }}
       />
 

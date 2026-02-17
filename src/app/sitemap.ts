@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { guides } from "@/lib/guides";
-import { siteConfig } from "@/lib/site";
+import { SITE_URL } from "@/lib/seo";
 import { tools } from "@/lib/tools";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,17 +8,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes.map((path) => ({
-      url: `${siteConfig.url}${path}`,
+      url: `${SITE_URL}${path}`,
       changeFrequency: "weekly" as const,
       priority: path === "" ? 1 : 0.8,
+      lastModified: new Date(),
     })),
     ...tools.map((tool) => ({
-      url: `${siteConfig.url}/tools/${tool.slug}`,
+      url: `${SITE_URL}/tools/${tool.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+      lastModified: new Date(),
     })),
     ...guides.map((guide) => ({
-      url: `${siteConfig.url}/guides/${guide.slug}`,
+      url: `${SITE_URL}/guides/${guide.slug}`,
       changeFrequency: "monthly" as const,
       lastModified: guide.updatedDate,
       priority: 0.7,

@@ -1,0 +1,61 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "startServerCommand": "npm run start -- --port=3000",
+      "settings": {
+        "chromeFlags": "--headless=new --user-data-dir=.lighthouseci/chrome-profile"
+      },
+      "url": [
+        "http://127.0.0.1:3000/",
+        "http://127.0.0.1:3000/tools",
+        "http://127.0.0.1:3000/guides",
+        "http://127.0.0.1:3000/about",
+        "http://127.0.0.1:3000/contact"
+      ]
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": [
+          "warn",
+          {
+            "minScore": 0.8
+          }
+        ],
+        "categories:accessibility": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "first-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 2500
+          }
+        ],
+        "largest-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 2500
+          }
+        ],
+        "cumulative-layout-shift": [
+          "warn",
+          {
+            "maxNumericValue": 0.1
+          }
+        ]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

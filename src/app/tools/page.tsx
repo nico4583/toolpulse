@@ -5,11 +5,24 @@ import { buildMetadata } from "@/lib/seo";
 import { pageSize } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
-export const metadata: Metadata = buildMetadata({
-  title: "All Finance Tools",
-  description: "Browse practical calculators for debt, salary, budgeting, housing, and investing decisions.",
-  path: "/tools",
-});
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const totalPages = Math.max(Math.ceil(tools.length / pageSize.tools), 1);
+  const rawPage = Number(params.page ?? 1);
+  const page = Number.isFinite(rawPage) ? Math.min(Math.max(Math.trunc(rawPage), 1), totalPages) : 1;
+  const title = page > 1 ? `All Finance Tools - Page ${page}` : "All Finance Tools";
+  const canonicalPath = page > 1 ? `/tools?page=${page}` : "/tools";
+
+  return buildMetadata({
+    title,
+    description: "Browse practical calculators for debt, salary, budgeting, housing, and investing decisions.",
+    path: canonicalPath,
+  });
+}
 
 export default async function ToolsPage({
   searchParams,
@@ -17,8 +30,9 @@ export default async function ToolsPage({
   searchParams: Promise<{ page?: string }>;
 }) {
   const params = await searchParams;
-  const page = Math.max(Number(params.page ?? 1), 1);
-  const totalPages = Math.ceil(tools.length / pageSize.tools);
+  const totalPages = Math.max(Math.ceil(tools.length / pageSize.tools), 1);
+  const rawPage = Number(params.page ?? 1);
+  const page = Number.isFinite(rawPage) ? Math.min(Math.max(Math.trunc(rawPage), 1), totalPages) : 1;
   const start = (page - 1) * pageSize.tools;
   const paged = tools.slice(start, start + pageSize.tools);
 

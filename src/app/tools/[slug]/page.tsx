@@ -6,7 +6,7 @@ import { Breadcrumbs, breadcrumbSchema } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { ToolCalculator } from "@/components/tool-calculator";
 import { guides } from "@/lib/guides";
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { getToolBySlug, tools } from "@/lib/tools";
 
 export async function generateStaticParams() {
@@ -60,7 +60,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           applicationCategory: "FinanceApplication",
           operatingSystem: "Any",
           description: tool.summary,
-          url: `https://moneymentor.tools/tools/${tool.slug}`,
+          url: absoluteUrl(`/tools/${tool.slug}`),
         }}
       />
 

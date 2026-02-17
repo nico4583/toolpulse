@@ -5,17 +5,31 @@ import { buildMetadata } from "@/lib/seo";
 import { guides } from "@/lib/guides";
 import { pageSize } from "@/lib/site";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Personal Finance Guides",
-  description: "Long-form personal finance and salary guides with practical frameworks and internal tool links.",
-  path: "/guides",
-  type: "article",
-});
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const totalPages = Math.max(Math.ceil(guides.length / pageSize.guides), 1);
+  const rawPage = Number(params.page ?? 1);
+  const page = Number.isFinite(rawPage) ? Math.min(Math.max(Math.trunc(rawPage), 1), totalPages) : 1;
+  const title = page > 1 ? `Personal Finance Guides - Page ${page}` : "Personal Finance Guides";
+  const canonicalPath = page > 1 ? `/guides?page=${page}` : "/guides";
+
+  return buildMetadata({
+    title,
+    description: "Long-form personal finance and salary guides with practical frameworks and internal tool links.",
+    path: canonicalPath,
+    type: "article",
+  });
+}
 
 export default async function GuidesPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const params = await searchParams;
-  const page = Math.max(Number(params.page ?? 1), 1);
-  const totalPages = Math.ceil(guides.length / pageSize.guides);
+  const totalPages = Math.max(Math.ceil(guides.length / pageSize.guides), 1);
+  const rawPage = Number(params.page ?? 1);
+  const page = Number.isFinite(rawPage) ? Math.min(Math.max(Math.trunc(rawPage), 1), totalPages) : 1;
   const start = (page - 1) * pageSize.guides;
   const paged = guides.slice(start, start + pageSize.guides);
 
