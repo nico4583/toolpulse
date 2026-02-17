@@ -50,6 +50,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <meta name="google-adsense-account" content="ca-pub-4604662808401939" />
         <meta name="google-site-verification" content="8G_MHpYNXlNM6coLpU7abGf1HFIlYLixt3IB7ATh1Pc" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-G7B6VC84BM"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G7B6VC84BM');
+          `}
+        </Script>
       </head>
       <body className={`${inter.variable} ${sourceSerif.variable} bg-slate-50 text-slate-900 antialiased`}>
         <AdSenseScript />
